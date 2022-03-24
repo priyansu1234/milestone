@@ -1,1 +1,179 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+
+
+
+namespace ConsoleApp4
+{
+    class Data
+    {
+        private int id;
+        private string name;
+        private int age;
+        private string address;
+        public int Id { get => id; set => id = value; }
+        public string Name { get => name; set => name = value; }
+        public int Age { get => age; set => age = value; }
+        public string Address { get => address; set => address = value; }
+
+        public Data()
+        {
+
+
+
+        }
+
+
+
+        public Data(int Id, string Name, int Age, string Address)
+        {
+            this.Id = Id;
+            this.Name = Name;
+            this.Age = Age;
+            this.Address = Address;
+
+
+
+        }
+
+
+
+        public override string ToString()
+        {
+            return base.ToString();
+        }
+    }
+
+
+
+    class Staff : Data
+    {
+        private string departmentName;
+
+
+
+        public string DepartmentName { get => departmentName; set => departmentName = value; }
+
+
+
+        public Staff() { }
+
+
+
+        public Staff(int Id, string Name, int Age, string Address, string DepartmentName)
+        {
+            base.Id = Id;
+            base.Name = Name;
+            base.Age = Age;
+            base.Address = Address;
+            this.DepartmentName = DepartmentName;
+        }
+
+
+
+        public override string ToString()
+        {
+            return base.Id + " " + base.Name + " " + base.Age + " " + base.Address + " " + this.DepartmentName;
+        }
+        Staff staff = new Staff();
+        public string CreateStaff(int age, string name, string departmentName)
+        {
+            staff.Age = age;
+            staff.Name = name;
+            staff.DepartmentName = departmentName;
+
+
+
+            return "Staff inserted succcessfully";
+        }
+        /* public Student ReadStudent(int age)
+        {
+        if (staff.Age.Equals(age))
+        {
+        return staff;
+        }
+        return null;
+        }*/
+
+
+
+    }
+
+
+
+    class Student : Data
+    {
+        private string course;
+
+
+
+        public string Course { get => course; set => course = value; }
+
+
+
+        public Student() { }
+
+
+
+        public Student(int Id, string Name, int Age, string Address, string Course)
+        {
+            base.Id = Id;
+            base.Name = Name;
+            base.Age = Age;
+            base.Address = Address;
+            this.Course = Course;
+        }
+
+
+
+        public override string ToString()
+        {
+            return base.Id + " " + base.Name + " " + base.Age + " " + base.Address + " " + this.Course;
+        }
+
+
+
+        Student stu = new Student();
+        public string CreateStudent(int id, string name, int age)
+        {
+            stu.Id = id;
+            stu.Name = name;
+            stu.Age = age;
+
+
+
+            return "Student inserted succcessfully";
+        }
+        public Student ReadStudent(int id)
+        {
+            if (stu.Id.Equals(id))
+            {
+                return stu;
+            }
+            return null;
+        }
+    }
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Student student1 = new Student(1, "Priyansu", 21, "Bhubaneswer", "Bsc");
+            Student student2 = new Student(2, "Chinu", 21, "Jajpur", "Bcom");
+            Student student3 = new Student(3, "Kiran", 23, "Bari", "Btech");
+            Student student4 = new Student(4, "Bishnu", 20, "Cuttack", "Degree");
+
+
+
+            Staff staff1 = new Staff(100, " Abhisek", 45, "Bari", "Computerscience");
+            Staff staff2 = new Staff(102, " Raju", 38, "Chandrasekharpur", "Zoology");
+        }
+    }
+
+}
+
 

@@ -1,1 +1,180 @@
+using Microsoft.Office.Interop.Excel;
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Runtime.InteropServices;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.Text;
+using System.Threading.Tasks;
+
+
+namespace CollegeManegment2
+{
+    
+
+
+
+
+    
+
+
+
+        public class CollegeData
+        {
+            private string id;
+            private string name;
+            private int age;
+            private string address;
+            public string Id { get => id; set => id = value; }
+            public string Name { get => name; set => name = value; }
+            public int Age { get => age; set => age = value; }
+            public string Address { get => address; set => address = value; }
+            public CollegeData()
+            { }
+            public CollegeData(string Id, string Name, int Age, string Address)
+            {
+                this.Id = Id;
+                this.Name = Name;
+                this.Age = Age;
+                this.Address = Address;
+            }
+            public override string ToString()
+            {
+                return base.ToString();
+            }
+
+
+
+        }
+
+
+
+        class Staff : CollegeData
+        {
+            private string departmentName; public string DepartmentName { get => departmentName; set => departmentName = value; }
+            public Staff() { }
+            public Staff(string Id, string Name, int Age, string Address, string DepartmentName)
+            {
+                base.Id = Id;
+                base.Name = Name;
+                base.Age = Age;
+                base.Address = Address;
+                this.DepartmentName = DepartmentName;
+            }
+            public override string ToString()
+            {
+                return base.Id + " " + base.Name + " " + base.Age + " " + base.Address + " " + this.DepartmentName;
+            }
+            Staff staff = new Staff();
+            public string CreateStaff(int age, string name, string departmentName)
+            {
+                staff.Age = age;
+                staff.Name = name;
+                staff.DepartmentName = departmentName; return "Staff inserted succcessfully";
+            }
+            internal void printfo()
+            {
+                throw new NotImplementedException();
+            }
+        }
+        public class Student : CollegeData
+        {
+            private string course; public string Course { get => course; set => course = value; }
+            public Student() { }
+            public Student(string Id, string Name, int Age, string Address, string Course)
+            {
+                base.Id = Id;
+                base.Name = Name;
+                base.Age = Age;
+                base.Address = Address;
+                this.Course = Course;
+            }
+            public override string ToString()
+            {
+                return base.Id + " " + base.Name + " " + base.Age + " " + base.Address + " " + this.Course;
+            }
+            Student stu = new Student();
+            public string CreateStudent(string id, string name, int age)
+            {
+                stu.Id = id;
+                stu.Name = name;
+                stu.Age = age; return "Student inserted succcessfully";
+            }
+            public Student ReadStudent(int id)
+            {
+                if (stu.Id.Equals(id))
+                {
+                    return stu;
+                }
+                return null;
+            }
+        }
+        public class DataSerializer
+        {
+            public void BinarySerializer(object data, string filepath)
+            {
+                object obje = null;
+                FileStream filestream;
+                BinaryFormatter bf = new BinaryFormatter();
+                if (File.Exists(filepath))
+
+
+
+                    filestream = File.Create(filepath);
+                bf.Serialize(filestream, data);
+                filestream.Close();
+            }
+            internal class program
+            {
+                static void Main(string[] args)
+                {
+                    CollegeData cmd = new CollegeData() { Id = "m10", Name = "priyansu", Age = 22, Address = "Bhubaneeswar" };
+                    if (cmd.Name.Length > 15)
+                    {
+                        Console.WriteLine("Name should not be more than 15 characters");
+                        Console.ReadLine();
+                    }
+                    else
+                    {
+                        string filepath = "C:\\\\CSV\\CollageData.txt";
+                        DataSerializer dataserializer = new DataSerializer();
+                        CollegeData c = null;
+                        dataserializer.BinarySerializer(cmd, filepath);
+                        //c = dataserializer.BinarySerializer(filepath) as CollegeData;
+                        Console.WriteLine(c.Id);
+                        Console.WriteLine(c.Name);
+                        Console.WriteLine(c.Age);
+                        Console.WriteLine(c.Address); Student student1 = new Student("011", "Raju", 21, "Banglore", "Mba");
+                        Student student2 = new Student("012", "Bishnu", 21, "kolkata", "Btech");
+                        Student student3 = new Student("013", "Abhisek", 23, "Bhubaneswar", "mtech");
+                        Student student4 = new Student("014", "Chinu", 20, "Banglore", "bca");
+                        Staff staff1 = new Staff("015", " Rinu", 45, "C]henai", "Computerscience");
+                        Staff staff2 = new Staff("016", " Babul", 38, "Pune", "physics");
+                        Student student = new Student();
+                        //Student.displayStudent();
+                        Staff a = new Staff("S001", "Abhi", 34, "BAngalore", "accounts");
+                        Student a1 = new Student("S002", "Raj", 21, "Hydrabad", "B.tech"); a.printfo();
+                        Microsoft.Office.Interop.Excel.Application app = new Microsoft.Office.Interop.Excel.Application();
+
+
+
+                        Workbook wb = app.Workbooks.Open("D:\\Hello\\AccountInfo.xlsx");
+                        object worksheets = wb.Worksheets; if (wb != null)
+                        {
+                            Microsoft.Office.Interop.Excel.Worksheet sheet = wb.Worksheets[1];
+                            if (sheet != null)
+                            {
+                                Microsoft.Office.Interop.Excel.Range usedRange = sheet.UsedRange;
+                                Microsoft.Office.Interop.Excel.Range rg = usedRange; if (rg != null)
+                                { for (int r = 1; r < rg.Count; r++) Console.WriteLine(rg.Cells[r][1].Value2); }
+                            }
+                        }
+                        Marshal.ReleaseComObject(wb); Marshal.ReleaseComObject(app);
+                    }
+                }
+            }
+        }
+    }
+
 

@@ -1,0 +1,154 @@
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+
+
+namespace ConsoleApp10
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            SqlConnection con = new SqlConnection("Data Source =.; Initial Catalog = Abc; Integrated Security = True; Connect Timeout = 30; Encrypt = False; TrustServerCertificate = False; ApplicationIntent = ReadWrite; MultiSubnetFailover = False");
+
+
+
+            con.Open();
+            string employee_name;
+            int emp_id;
+            SqlParameter p1;
+
+
+
+            Console.WriteLine("what crud operation you want to do");
+            Console.WriteLine("Insert=1 Update=2 Delete=3 "); Console.WriteLine("which table you want to insert your data A DEPARTMENT B EMPLOYEE C PROJECT");
+            int caseSwitch = Convert.ToInt32(Console.ReadLine());
+            switch (caseSwitch)
+            {
+                case 1:
+                    Console.WriteLine("case 1");
+
+
+                    Console.WriteLine("please enter employee name");
+                    employee_name = Console.ReadLine();
+
+                    Console.WriteLine("please enter employee id");
+                    emp_id = int.Parse(Console.ReadLine());
+
+
+
+                    SqlCommand cmd = con.CreateCommand();
+                    cmd.CommandText = "insertSP";
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.Add("@employeeename", SqlDbType.VarChar, 50).Value = employee_name;
+
+                    cmd.Parameters.Add("@employeeid", SqlDbType.VarChar, 50).Value = emp_id;
+
+
+
+
+
+                    int i = cmd.ExecuteNonQuery();
+                    if (i > 0)
+                    {
+                        Console.WriteLine("inserted successfully");
+
+
+
+                    }
+                    break;
+
+
+
+                    Console.WriteLine("case 2");
+                    Console.WriteLine("enter the record number which one you want to update");
+
+
+
+                    Console.WriteLine("please enter employee name");
+                    employee_name = Console.ReadLine();
+
+
+
+                    Console.WriteLine("please enter employee id");
+                    emp_id = int.Parse(Console.ReadLine());
+
+
+
+                    SqlCommand cmdupdate = new SqlCommand("updateSP", con);
+                    cmdupdate.CommandType = CommandType.StoredProcedure;
+                    p1 = new SqlParameter("@employee_id", SqlDbType.Int);
+                    p1.Value = Convert.ToInt32(emp_id);
+
+
+
+                    cmdupdate.Parameters.Add(p1); p1 = new SqlParameter("@employee_name", SqlDbType.Int);
+                    p1.Value = employee_name; p1 = new SqlParameter("@emp_id", SqlDbType.Int);
+                    p1.Value = emp_id;
+                    cmdupdate.Parameters.Add(p1);
+
+
+
+
+
+
+                    i = cmdupdate.ExecuteNonQuery();
+                    if (i > 0)
+                    {
+                        Console.WriteLine("update successfully");
+
+
+
+                    }
+                    break;
+
+
+
+                case 3:
+
+
+
+                    Console.WriteLine("case 3");
+                    Console.WriteLine("enter the record number which one you want to delete");
+
+
+
+                    emp_id = Convert.ToInt32(Console.ReadLine());
+
+
+
+                    SqlCommand cmddelete = new SqlCommand("deleteSP", con);
+                    cmddelete.CommandType = CommandType.StoredProcedure;
+                    p1 = new SqlParameter("@employee_id", SqlDbType.Int);
+                    p1.Value = Convert.ToInt32(emp_id);
+
+
+
+
+
+
+
+
+                    i = Convert.ToInt32(cmddelete.ExecuteNonQuery());
+                    if (i > 0)
+                    {
+                        Console.WriteLine("update successfully");
+
+
+
+                    }
+                    break;
+
+
+
+
+            }
+
+        }
+    }
+}

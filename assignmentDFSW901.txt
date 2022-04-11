@@ -1,0 +1,167 @@
+<!Doctype html>
+<html>
+<head >
+<titel ><b><center>Event Organizer</center></b></title>
+</head>
+<body style="background-color:white;">
+<header>
+<br><center><img src ="C:\Users\M1082848\Documents\img2.jpg"></img></center></br>
+</header>
+<head><b>Service Description</b></head>
+<p>We are indilged in offering a Proffessional Event Management. These services are provided by our team of professionals as per the requirement of the client. These services are highly praised for their features like sophisticated technology, effective results and reliability. We offer these services in a definite time and at affordable rates.</p>
+<head><b>Supported Events</b></head>
+<ul>
+<li>Concerts</li>
+<li>Conferences</li>
+<li>Films</li>
+<li>Panel Debates</li>
+<li>Performance</li>
+<li>Seminars</li>
+<li>Talks & Discussion</li>
+<li>Workshops</li>
+</ul>
+<ol>
+<li>Team Building Events</li>
+<li>Trade Shows</li>
+<li>Business Dinners</li>
+<li>Networking Events</li>
+<li>Opening Ceremonies</li>
+<li>Product Launches2022</li>
+<li>Theme Parties</li>
+<li>ShareHolder Meetings</li>
+</ol>
+<head><b><br>Event Schedule</br></b></head>
+<br>
+<table border ="1">
+<thead>
+<tr>
+<th><b>Name</b></th>
+<th ><b>Venue</b></th>
+<th ><b>Start Time</b></th>
+<th ><b>End Time</b></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Corporate Events</td>
+<td>ABC Hall, 3rd Floor</td>
+<td colspan ="4">Yet to start </td>
+<td></td>
+</tr>
+<tr>
+<td>Wedding Planning</td>
+<td>County Club</td>
+<td >08.04.2022 7.00AM</td>
+<td>08.04.2022 9.00AM</td>
+</tr>
+</tbody>
+</table>
+</br>
+<head><b><br>Event Schedule</br></b></head>
+<br>
+<table border ="1">
+<tr>
+<th><b>Name</b></th>
+<th ><b>Venue</b></th>
+<th ><b>Start Time</b></th>
+<th ><b>End Time</b></th>
+</tr>
+<tr>
+<td>Corporate Events</td>
+<td>ABC Hall, 3rd Floor</td>
+<td colspan ="4">Yet to start </td>
+<td></td>
+</tr>
+<tr>
+<td>Wedding Planning</td>
+<td>County Club</td>
+<td >08.04.2022 7.00AM</td>
+<td>08.04.2022 9.00AM</td>
+</tr>
+<tr>
+<td>Product Launches</td>
+<td>City Tower, Hall No 2</td>
+<td colspan ="4">Yet to start </td>
+<td></td>
+</tr>
+<tr>
+<td>Seminar on Cloud Computing</td>
+<td>XYZ Hall</td>
+<td colspan ="4">Yet to start </td>
+<td></td>
+</tr>
+<tr>
+<td>Heavnly Fashion</td>
+<td>Spark Venue</td>
+<td >16.04.2022 5.00PM</td>
+<td>16.04.2022 8.00PM</td>
+</tr>
+<tr>
+<td>Gala Dinners</td>
+<td>National Resort</td>
+<td >12.04.2022 5.00AM</td>
+<td>12.04.2022 8.00AM</td>
+</tr>
+<tr>
+<td>Award Ceremony</td>
+<td>Echo Venue</td>
+<td colspan ="4">Yet to start </td>
+<td></td>
+</tr>
+<tr>
+<td>Asian Party</td>
+<td>RK Restaurent</td>
+<td colspan ="4">Yet to start </td>
+<td></td>
+</tr>
+<tr>
+<td>Dinner Tonight</td>
+<td>Tower, Hall No 4</td>
+<td colspan ="4">Yet to start </td>
+<td></td>
+</tr>
+<tr>
+<td>Incentive Party</td>
+<td>Five Star Hall</td>
+<td colspan ="4">Yet to start </td>
+<td></td>
+</tr>
+</table>
+</br>
+<head><br><b>Contact us</b></br></head>
+<br>Send us an email <a href="Eventorganizer mail">Eventorganizer.com</a></br>
+<br>
+<head><b>Location</b></head>
+</br>
+<br>
+<b>Event Organizer Location</b>
+</br>
+<br> <a href="Location">Geo Location</a></br>
+
+<p>Click the button to get your coordinates.</p>
+<button onclick="getLocation()">Click me</button>
+<p id="demo"></p>
+<script>
+var x = document.getElementById("demo");
+function getLocation() 
+{
+  if (navigator.geolocation) 
+  {
+    navigator.geolocation.getCurrentPosition(showPosition);
+  } 
+  else 
+  { 
+    x.innerHTML = "Geolocation is not supported by this browser.";
+  }
+}
+
+function showPosition(position) 
+{
+  x.innerHTML = "Latitude: " + position.coords.latitude + 
+  "<br>Longitude: " + position.coords.longitude;
+}
+</script>
+
+
+</body>
+</html>

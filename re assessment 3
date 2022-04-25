@@ -1,0 +1,81 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+
+namespace Milestone.Controllers
+{
+    public class semesterController : Controller
+    {
+        SMSEntities db= new SMSEntities();
+        // GET: semester
+        public ActionResult Index()
+        {
+            return View(db.semesters.ToList());
+
+        }
+        [HttpGet]
+
+        public ActionResult Create()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Create(semester semester)
+        {
+            if(ModelState.IsValid)
+            {
+                db.semesters.Add(semester);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View(semester);
+        }
+        public ActionResult Details(int id)
+        {
+            return View();
+        }
+        public ActionResult Edit(int id)
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Edit(int id, FormCollection collection)
+        {
+            try
+            {
+                return RedirectToAction("Index");
+            }
+            catch
+
+            {
+                return View();
+            }
+
+        }
+        public ActionResult Delete(int id)
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Delete(int id, FormCollection collection)
+        {
+            try
+            {
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
+
+    }
+}
+
+        
+        
+    
+
